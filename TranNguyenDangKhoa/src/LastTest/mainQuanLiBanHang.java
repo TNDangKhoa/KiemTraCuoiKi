@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class mainQuanLiBanHang{
 	private static ArrayList<HangHoa> dshanghoa;
 	public static void main(String[] args) {
-		System.out.println("==========CHƯƠNG TRÌNH QUẢN LÝ HÀNG HÓA===========");
-		System.out.println(">>>>>>>>>>>>>MENU<<<<<<<<<<<<<");
+		System.out.println("==========CHUONG TRINH QUAN LY HANG HOA===========");
+		System.out.println("------------MENU CHUC NANG-------------");
 		dshanghoa = Data.danhsachHangHoa();
 		ArrayList<Menu> dsmenu = Data.danhsachMenu();
 		for (int i = 0; i < dsmenu.size(); i++) {
@@ -16,7 +16,7 @@ public class mainQuanLiBanHang{
 		}
 		Scanner scanner = new Scanner(System.in);
 		int suLuaChon;
-		System.out.println("Lựa chọn Chức năng: ");
+		System.out.println("Choose searching type!: ");
 		suLuaChon = scanner.nextInt();
 		ArrayList<HangHoa> dshanghoa = Data.danhsachHangHoa();
 		switch (suLuaChon) {
@@ -30,7 +30,7 @@ public class mainQuanLiBanHang{
 			sua(dshanghoa);
 			break;
 		case 4:
-			timKiem(	);
+			timKiem();
 			break;
 		case 5:
 			sapxep(dshanghoa);
@@ -40,7 +40,7 @@ public class mainQuanLiBanHang{
 			break;
 
 		default:
-			System.out.println("Chưa hỗ trợ chức năng này");
+			System.out.println("khong co! ket thuc chuong trinh...");
 		}
 
 		scanner.close();
@@ -76,14 +76,14 @@ public class mainQuanLiBanHang{
 			break;
 
 		default:
-			System.out.println("Chưa hỗ trợ chức năng này");
+			System.out.println("khong co! ket thuc chuong trinh...");
 		}
 
 		scanner.close();
 	}
 
 	private static void sapxep(ArrayList<HangHoa> dshanghoa) {
-		System.out.println("Chọn kiểu sắp xếp");
+		System.out.println("Chon kieu sap xep");
 		ArrayList<Menu> dsmenusapxep = Data.menuSapXep();
 		for (int i = 0; i < dsmenusapxep.size(); i++) {
 			System.out.println(dsmenusapxep.get(i).tenMenu);
@@ -111,14 +111,14 @@ public class mainQuanLiBanHang{
 			sapxeptheogiangay(dshanghoa);
 			break;
 		default:
-			System.out.println("Chưa hỗ trợ chức năng này");
+			System.out.println("khong co! ket thuc chuong trinh...");
 		}
 
 		scanner.close();
 	}
 
 	private static void thongke(ArrayList<HangHoa> dshanghoa) {
-		System.out.println("Chọn loại thống kê");
+		System.out.println("Chon loai thong ke");
 		ArrayList<Menu> dsmenuthongke = Data.danhsachMenuthongke();
 		for (int i = 0; i < dsmenuthongke.size(); i++) {
 			System.out.println(dsmenuthongke.get(i).tenMenu);
@@ -137,7 +137,7 @@ public class mainQuanLiBanHang{
 			thongkesoluongtungloai(dshanghoa);
 			break;
 		default:
-			System.out.println("Chưa hỗ trợ chức năng này");
+			System.out.println("khong co! ket thuc chuong trinh...");
 		}
 
 		scanner.close();
@@ -145,69 +145,69 @@ public class mainQuanLiBanHang{
 
 //Chuc nang them
 	static void them(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Bắt đầu chức năng thêm");
-		System.out.println("Nhập thông tin hàng hóa");
+		System.out.println("Starting add function");
+		System.out.println("Nhap thong tin hang hoa");
 		Scanner scanner = new Scanner(System.in);
 		String loai;
-		System.out.print("-Loại hàng hóa: ");
+		System.out.print("-Loai hang: ");
 		loai = scanner.nextLine();
 
 		String mahang;
-		System.out.print("-Mã hàng hóa: ");
+		System.out.print("-Ma hang: ");
 		mahang = scanner.nextLine();
 
 		String tenhanghoa;
-		System.out.print("-Tên hàng hóa: ");
+		System.out.print("-Ten hang: ");
 		tenhanghoa = scanner.nextLine();
 
 		double gianhap;
-		System.out.print("-Giá nhập: ");
+		System.out.print("-Gia: ");
 		gianhap = scanner.nextDouble();
 
 		int soluongtonkho;
-		System.out.print("-Số lượng tồn kho: ");
+		System.out.print("-So luong ton kho: ");
 		soluongtonkho = scanner.nextInt();
 
 		String ngaynhapkho;
 		Scanner sc = new Scanner(System.in);
-		System.out.print("-Ngày nhập kho: ");
+		System.out.print("-Ngay nhap kho: ");
 		ngaynhapkho = sc.nextLine();
 		sc.close();
 		scanner.close();
 
 		HangHoa hanghoathem = new HangHoa(loai, mahang, tenhanghoa, gianhap, soluongtonkho, ngaynhapkho);
 
-		System.out.println("---Đã thêm vào thành công---");
-		System.out.println("-Số lượng hàng hóa trước khi thêm là: " + dsHangHoa.size());
+		System.out.println("---Thanh cong---");
+		System.out.println("-So luong hang hoa truoc khi them: " + dsHangHoa.size());
 
 		dsHangHoa.add(hanghoathem);
 
-		System.out.println("-Số lượng hàng hóa sau khi thêm là: " + dsHangHoa.size());
+		System.out.println("-So luong hang hoa sau khi them: " + dsHangHoa.size());
 
-		System.out.println("Chi tiết hàng hóa đã thêm vào là:");
-		System.out.println("Loại: " + hanghoathem.Loai);
-		System.out.println("Mã hàng: " + hanghoathem.maHang);
-		System.out.println("Tên hàng: " + hanghoathem.tenHangHoa);
-		System.out.println("Giá Hàng: " + hanghoathem.giaNhap);
-		System.out.println("Số lượng tồn kho: " + hanghoathem.soLuongTonKho);
-		System.out.println("Ngày nhập kho: " + hanghoathem.ngayNhap);
+		System.out.println("Chi tiet hang hoa da them:");
+		System.out.println("Loai: " + hanghoathem.Loai);
+		System.out.println("Ma hang: " + hanghoathem.maHang);
+		System.out.println("Ten hang: " + hanghoathem.tenHangHoa);
+		System.out.println("Gia hang: " + hanghoathem.giaNhap);
+		System.out.println("So luong ton kho: " + hanghoathem.soLuongTonKho);
+		System.out.println("Ngay nhap kho: " + hanghoathem.ngayNhap);
 	}
 
 //Chuc nang xoa
 	static void xoaHangHoa(ArrayList<HangHoa> dsHangHoa) {
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("---Tên hàng hóa cần xóa---");
+		System.out.println("------Ten hang hoa can xoa------");
 		String tenhanghoa = scanner.nextLine();
 
 		HangHoa hangHoa = SearchFunction.NameSearch(tenhanghoa, dsHangHoa);
 		if (hangHoa != null) {
 			if (dsHangHoa.remove(hangHoa)) {
-				System.out.println("--Đã xóa thành công--");
+				System.out.println("--Thanh cong--");
 			} else
-				System.out.println("Xóa hàng hóa thất bại");
+				System.out.println("That bai...");
 		} else
-			System.out.println("Ko tìm thấy hàng hóa nào trong ds với tên " + tenhanghoa);
+			System.out.println("Khong tim thay hang hoa nao trong danh sach co ten " + tenhanghoa);
 		scanner.close();
 	}
 
@@ -217,21 +217,21 @@ public class mainQuanLiBanHang{
 
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("---Tên hàng hóa cần sửa---");
+		System.out.println("------Ten hang hoa can sua------");
 
 		String tenhanghoa = scanner.nextLine();
 
 		HangHoa hangHoa = SearchFunction.NameSearch(tenhanghoa, dsHangHoa);
 
 		if (hangHoa != null) {
-			System.out.println("Hàng hóa trước khi sửa là: " + hangHoa.tenHangHoa);
+			System.out.println("Ten hang truoc khi sua: " + hangHoa.tenHangHoa);
 			int vitri = dsHangHoa.indexOf(hangHoa);
-			System.out.println("---Nhập tên hàng hóa mới:");
+			System.out.println("-Nhap ten moi:");
 			hangHoa.tenHangHoa = scanner.nextLine();
 			dsHangHoa.set(vitri, hangHoa);
-			System.out.println("---Hàng hóa sau khi sửa là: " + dsHangHoa.get(vitri).tenHangHoa);
+			System.out.println("-Ten hang sau khi sua: " + dsHangHoa.get(vitri).tenHangHoa);
 		} else {
-			System.out.println("Cập nhật hàng hóa thất bại");
+			System.out.println("Cap nhat that bai...");
 		}
 		scanner.close();
 	}
@@ -241,17 +241,17 @@ public class mainQuanLiBanHang{
 		System.out.println("Starting type search");
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Loại hàng hóa cần tìm là:    ");
+		System.out.println("Loai hang hoa can tim?:    ");
 		String loai = scanner.nextLine();
 
 		ArrayList<HangHoa> dsTimkiem = SearchFunction.TypeSearch(loai, dsHangHoa);
 		if (!dsTimkiem.isEmpty()) {
-			System.out.println("Đã tìm thấy hàng hóa theo loại nhập " + loai);
+			System.out.println("Da tim thay hang hoa theo loai da nhap: " + loai);
 			for (HangHoa hangHoa : dsTimkiem)
 				System.out.println(hangHoa.Loai + " - " + hangHoa.maHang + " - " + hangHoa.tenHangHoa + " - "
 						+ hangHoa.giaNhap + " - " + hangHoa.soLuongTonKho);
 		} else
-			System.out.println("Không tìm thấy hàng hóa cần tìm ");
+			System.out.println("Khong tim thay hang hoa can tim");
 		scanner.close();
 	}
 
@@ -261,13 +261,13 @@ public class mainQuanLiBanHang{
 		System.out.println("Starting price search");
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Giá hàng hóa cần tìm là:    ");
+		System.out.println("Gia hang can tim:    ");
 		double gianhap = scanner.nextDouble();
 		ArrayList<HangHoa> dsKetqua = SearchFunction.PriceSearch(gianhap, dsHangHoa);
 		if (dsKetqua.isEmpty()) {
-			System.out.println("Không tìm thấy hàng hóa cần tìm ");
+			System.out.println("Khong tim thay!");
 		} else {
-			System.out.println("Đã tìm thấy hàng hóa theo giá vừa nhập " + gianhap);
+			System.out.println("Da tim thay hang theo gia vua nhap: " + gianhap);
 			for (HangHoa hangHoa : dsKetqua) {
 				System.out.println(hangHoa.Loai + " - " + hangHoa.maHang + " - " + hangHoa.tenHangHoa + " - "
 						+ hangHoa.giaNhap + " - " + hangHoa.soLuongTonKho);
@@ -279,16 +279,16 @@ public class mainQuanLiBanHang{
 
 //Tim theo ngay	
 	static void DateSearch(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Bắt đầu chức năng tìm kiếm theo ngày");
+		System.out.println("Starting date search");
 		Scanner scanner = new Scanner(System.in);
 		String ngaynhapkho;
-		System.out.println("Nhập ngày hàng hóa là:    ");
+		System.out.println("Ngay nhap hang hoa?:    ");
 		ngaynhapkho = scanner.nextLine();
 		ArrayList<HangHoa> dsKetqua = SearchFunction.DateSearch(ngaynhapkho, dsHangHoa);
 		if (dsKetqua.isEmpty()) {
-			System.out.println("Không tìm thấy hàng hóa cần tìm ");
+			System.out.println("Khong tim thay");
 		} else {
-			System.out.println("Đã tìm thấy hàng hóa theo ngày vừa nhập " + ngaynhapkho);
+			System.out.println("Da tim thay hang hoa theo ngay vua nhap" + ngaynhapkho);
 			for (HangHoa hangHoa : dsKetqua) {
 				System.out.println(hangHoa.Loai + " - " + hangHoa.maHang + " - " + hangHoa.tenHangHoa + " - "
 						+ hangHoa.giaNhap + " - " + hangHoa.soLuongTonKho + " - " + hangHoa.ngayNhap);
@@ -299,17 +299,17 @@ public class mainQuanLiBanHang{
 
 //Tim theo ma	
 	static void CodeSearch(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Bắt đầu chức năng tìm kiếm theo mã");
+		System.out.println("Starting code search");
 		Scanner scanner = new Scanner(System.in);
 		String mahang;
-		System.out.println("Nhập mã hàng hóa cần tìm(VN001=>VN030) ");
+		System.out.println("Nhap ma hang can tim(HH001=>HH030) ");
 		mahang = scanner.nextLine();
 		HangHoa hangHoa = SearchFunction.CodeSearch(mahang, dsHangHoa);
 		if (hangHoa != null) {
 			System.out.println(hangHoa.Loai + " - " + hangHoa.maHang + " - " + hangHoa.tenHangHoa + " - "
 					+ hangHoa.giaNhap + " - " + hangHoa.soLuongTonKho + " - " + hangHoa.ngayNhap);
 		} else {
-			System.out.println("Không tìm thấy hàng hóa với mã là " + mahang);
+			System.out.println("Khong tim thay hang voi ma " + mahang);
 		}
 		scanner.close();
 	}
@@ -319,10 +319,10 @@ public class mainQuanLiBanHang{
 		System.out.println("Starting date range search");
 		Scanner scanner = new Scanner(System.in);
 		String ngaydau;
-		System.out.println("Nhập ngày bắt đầu theo định dạng (dd/mm/yyyy): ");
+		System.out.println("Nhap ngay dau (dd/mm/yyyy): ");
 		ngaydau = scanner.nextLine();
 		String ngaycuoi;
-		System.out.println("Nhập ngày kết thúc theo định dạng (dd/mm/yyyy): ");
+		System.out.println("Nhap ngay cuoi(dd/mm/yyyy): ");
 		ngaycuoi = scanner.nextLine();
 		ArrayList<HangHoa> dsKetqua = SearchFunction.DateRangeSearch(ngaydau, ngaycuoi, dsHangHoa);
 		for (HangHoa hangHoa : dsKetqua) {
@@ -336,14 +336,14 @@ public class mainQuanLiBanHang{
 
 //Tim Khoang gia	
 	static void PriceRangeSearch(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Bắt đầu chức năng tìm kiếm theo khoảng giá");
+		System.out.println("Starting price range search");
 		{
 			Scanner scanner = new Scanner(System.in);
 			double giadau;
-			System.out.println("Nhập giá bắt đầu: ");
+			System.out.println("Nhap gia dau: ");
 			giadau = scanner.nextDouble();
 			double giacuoi;
-			System.out.println("Nhập giá kết thúc: ");
+			System.out.println("Nhap gia cuoi: ");
 			giacuoi = scanner.nextDouble();
 			ArrayList<HangHoa> dsKetqua = SearchFunction.PriceRangeSearch(giadau, giacuoi, dsHangHoa);
 			for (HangHoa hangHoa : dsKetqua) {
@@ -353,9 +353,9 @@ public class mainQuanLiBanHang{
 		}
 	}
 
-//chuc nang sap xep
+//chuc nang sap xep tang dan
 	static void sapxepgianhaptangdan(ArrayList<HangHoa> dsHanghoa) {
-		System.out.println("Danh sách hàng hóa sau khi xắp xếp giá nhập tăng dần");
+		System.out.println("DS hang hoa theo gia nhap tang dan");
 		ArrayList<HangHoa> dsSapxep = SapXep.sapxepgianhaptangdan(dsHanghoa);
 		for (HangHoa hangHoa : dsSapxep) {
 			System.out.println("Hang hoa: " + hangHoa.tenHangHoa + " - " + hangHoa.giaNhap);
@@ -364,7 +364,7 @@ public class mainQuanLiBanHang{
 
 //Chuc nang sap xep theo gia giam dan
 	static void sapxepgianhapgiamdan(ArrayList<HangHoa> dsHanghoa) {
-		System.out.println("Danh sách hàng hóa sau khi xắp xếp giá nhập giảm dần");
+		System.out.println("DS hang hoa theo gia nhap giam dan");
 		ArrayList<HangHoa> dsSapxep = SapXep.sapxepgianhapgiamdan(dsHanghoa);
 		for (HangHoa hangHoa : dsSapxep) {
 			System.out.println("Hang hoa: " + hangHoa.tenHangHoa + " - " + hangHoa.giaNhap);
@@ -373,7 +373,7 @@ public class mainQuanLiBanHang{
 
 //Chuc nang sap xep theo ngay tnag dan
 	static void sapxepngaynhaptangdan(ArrayList<HangHoa> dsHanghoa) {
-		System.out.println("Danh sách hàng hóa sau khi xắp xếp ngày nhập tăng dần");
+		System.out.println("DS hang hoa theo ngay nhap tang dan");
 		ArrayList<HangHoa> dsSapxep = SapXep.sapxepngaynhaptangdan(dsHanghoa);
 		for (HangHoa hangHoa : dsSapxep) {
 			System.out
@@ -383,7 +383,7 @@ public class mainQuanLiBanHang{
 
 //Chuc nang sap xep theo ngay giam dan
 	static void sapxepngaynhapgiamdan(ArrayList<HangHoa> dsHanghoa) {
-		System.out.println("Danh sách hàng hóa sau khi xắp xếp ngày nhập giảm dần");
+		System.out.println("DS hang hoa theo ngay nhap giam dan");
 		ArrayList<HangHoa> dsSapxep = SapXep.sapxepngaynhapgiamdan(dsHanghoa);
 		for (HangHoa hangHoa : dsSapxep) {
 			System.out
@@ -393,9 +393,9 @@ public class mainQuanLiBanHang{
 
 //Chuc nang sap xep theo loai ngay
 	static void sapxeptheoloaingay(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Bắt đầu chức năng sắp xếp theo loại và ngày");
+		System.out.println("Starting arrange by date and price");
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Loại hàng hóa cần sắp xếp là: ");
+		System.out.println("Loai hang hoa can sap xep: ");
 		String loai = scanner.nextLine();
 		ArrayList<HangHoa> dstimkiem = SearchFunction.TypeSearch(loai, dsHangHoa);
 		for (HangHoa hangHoa : dstimkiem) {
@@ -407,13 +407,13 @@ public class mainQuanLiBanHang{
 
 //Chuc nang sap xep theo gia ngay
 	static void sapxeptheogiangay(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Bắt đầu chức năng sắp xếp theo giá và ngày");
+		System.out.println("Starting arrange by date and price");
 		Scanner scanner = new Scanner(System.in);
 		double giadau;
-		System.out.println("Nhập giá bắt đầu: ");
+		System.out.println("Nhap gia bat dau: ");
 		giadau = scanner.nextDouble();
 		double giacuoi;
-		System.out.println("Nhập giá kết thúc: ");
+		System.out.println("Nhap gia ket thuc: ");
 		giacuoi = scanner.nextDouble();
 		ArrayList<HangHoa> dstimkiem = SearchFunction.PriceRangeSearch(giadau, giacuoi, dsHangHoa);
 		for (HangHoa hangHoa : dstimkiem) {
@@ -425,21 +425,21 @@ public class mainQuanLiBanHang{
 
 //Chuc nang thong ke hang hoa
 	static void thongketongsoluonghanghoa(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Tổng số lượng hàng hóa là: " + ThongKe.thongketongsoluonghanghoa(dsHangHoa));
+		System.out.println("Tong so luong hang hoa: " + ThongKe.thongketongsoluonghanghoa(dsHangHoa));
 
 	}
 
 	static void thongketonggiatrihanghoa(ArrayList<HangHoa> dsHangHoa) {
-		System.out.println("Tổng giá trị hàng hóa là: " + ThongKe.thongketonggiatrihanghoa(dsHangHoa));
+		System.out.println("Tong gia tri hang hoa: " + ThongKe.thongketonggiatrihanghoa(dsHangHoa));
 	}
 
 	static void thongkesoluongtungloai(ArrayList<HangHoa> dsHanghoa) {
 		System.out.println(
-				"Số lượng hàng hóa của loại thực phẩm là:" + ThongKe.thongkesoluongtungloai("Thực phẩm", dsHanghoa));
+				"So luong hang hoa theo loai thuc pham:" + ThongKe.thongkesoluongtungloai("Thực phẩm", dsHanghoa));
 		System.out.println(
-				"Số lượng hàng hóa của loại Sành sứ là:" + ThongKe.thongkesoluongtungloai("Sành sứ", dsHanghoa));
+				"So luong hang hoa theo loai sanh su:" + ThongKe.thongkesoluongtungloai("Sành sứ", dsHanghoa));
 		System.out.println(
-				"Số lượng hàng hóa của loại điện máy là:" + ThongKe.thongkesoluongtungloai("Điện máy", dsHanghoa));
+				"So luong hang hoa theo loai dien may:" + ThongKe.thongkesoluongtungloai("Điện máy", dsHanghoa));
 	}
 
 }
