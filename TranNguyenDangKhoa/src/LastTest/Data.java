@@ -65,7 +65,7 @@ public class Data{
 
 	public static ArrayList<Menu> menuSapXep() {
 		ArrayList<Menu> dsmenusapxep = new ArrayList<Menu>();
-		dsmenusapxep.add(new Menu(1, ".1. Sap xep gia nhap tang dan"));
+		dsmenusapxep.add(new Menu(1, "1. Sap xep gia nhap tang dan"));
 		dsmenusapxep.add(new Menu(2, "2. Sap xep gia nhap giam dan"));
 		dsmenusapxep.add(new Menu(3, "3. Sap xep ngay nhap tang dan"));
 		dsmenusapxep.add(new Menu(4, "4. Sap xep ngay nhap giam dan"));
